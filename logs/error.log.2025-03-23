@@ -1,0 +1,1948 @@
+2025-03-23 17:50:10,025 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 17:50:42,893 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:08:21,461 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-23 18:08:21,462 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-23 18:08:21,462 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 170, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 79, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-23 18:08:44,908 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:30:11,768 - root - ERROR - Unexpected error in get_recommendations: name 'sp' is not defined
+2025-03-23 18:30:11,771 - root - ERROR - Unexpected error in create_playlist_from_genre: name 'sp' is not defined
+2025-03-23 18:30:11,771 - root - ERROR - Error creating playlist: name 'sp' is not defined
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 50, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 187, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 95, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                                              ^^
+NameError: name 'sp' is not defined
+2025-03-23 18:33:06,922 - root - ERROR - Unexpected error in get_recommendations: name 'sp' is not defined
+2025-03-23 18:33:06,922 - root - ERROR - Unexpected error in create_playlist_from_genre: name 'sp' is not defined
+2025-03-23 18:33:06,923 - root - ERROR - Error creating playlist: name 'sp' is not defined
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 50, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 187, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 95, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                                              ^^
+NameError: name 'sp' is not defined
+2025-03-23 18:39:41,273 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:43:36,559 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:44:08,707 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:44:40,900 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:45:13,048 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:45:45,207 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:45:54,778 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 18:45:58,874 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 18:45:59,761 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 18:46:17,442 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:47:02,967 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 18:47:07,050 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 18:47:29,960 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:48:02,299 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:48:34,486 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:49:06,684 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:49:38,892 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:50:11,087 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 18:50:35,745 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 143, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 113, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 186, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 238, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.RemoteProtocolError: Server disconnected without sending a response.
+2025-03-23 18:50:36,806 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 18:50:38,719 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 18:50:41,052 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 18:50:43,232 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 22:53:40,643 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:41,741 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:43,321 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:46,479 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:49,928 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:55,083 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:53:55,167 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 22:54:02,779 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 22:54:14,244 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 99, in handle_async_request
+    raise exc
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 114, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 276, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 753, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 747, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 377, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 649, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4366, in get_updates
+    await self._post(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 333, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 300, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
+2025-03-23 23:07:22,133 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 45, in middleware
+    user_id = update.effective_user.id
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+2025-03-23 23:07:22,138 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 45, in middleware
+    user_id = update.effective_user.id
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+2025-03-23 23:08:23,248 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 23:08:26,538 - root - ERROR - Unexpected error in inline search: 'str' object has no attribute 'answer'
+2025-03-23 23:08:33,503 - spotipy.client - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=6kopmMZiyLmw7h66uXcXR7 with Params: {} returned 403 due to None
+2025-03-23 23:08:33,504 - root - ERROR - Unexpected error in create_playlist_from_song: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=6kopmMZiyLmw7h66uXcXR7:
+ None, reason: None
+2025-03-23 23:08:33,505 - root - ERROR - Error creating playlist: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=6kopmMZiyLmw7h66uXcXR7:
+ None, reason: None
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 274, in _internal_call
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.spotify.com/v1/audio-features/?ids=6kopmMZiyLmw7h66uXcXR7
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 52, in create_playlist_with_count
+    track_uris = await create_playlist_from_song(data_id, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 124, in create_playlist_from_song
+    seed_track_features = await asyncio.to_thread(get_audio_features, track_id)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 47, in get_audio_features
+    features = sp.audio_features([track_id])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1802, in audio_features
+    results = self._get("audio-features/?ids=" + ",".join(tlist))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 324, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 294, in _internal_call
+    raise SpotifyException(
+spotipy.exceptions.SpotifyException: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=6kopmMZiyLmw7h66uXcXR7:
+ None, reason: None
+2025-03-23 23:08:36,752 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-23 23:14:49,148 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 45, in middleware
+    user_id = update.effective_user.id
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+2025-03-23 23:14:49,150 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 45, in middleware
+    user_id = update.effective_user.id
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+2025-03-23 23:14:49,151 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 45, in middleware
+    user_id = update.effective_user.id
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'

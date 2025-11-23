@@ -1,0 +1,6 @@
+{
+  "test.py::TestApiGateway::test_create_playlist": true,
+  "test.py::TestApiGateway::test_search_track": true,
+  "test.py::TestApiGateway::test_search_track_error": true,
+  "test.py::TestApiGateway::test_create_playlist_error": true
+}

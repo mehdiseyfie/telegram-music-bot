@@ -1,0 +1,16 @@
+[
+  "test.py::TestApiGateway::test_create_playlist",
+  "test.py::TestApiGateway::test_create_playlist_error",
+  "test.py::TestApiGateway::test_search_track",
+  "test.py::TestApiGateway::test_search_track_error",
+  "test.py::TestBotService::test_inline_search",
+  "test.py::TestBotService::test_show_main_menu",
+  "test.py::TestBotService::test_start_command",
+  "test.py::TestDatabaseService::test_create_playlist",
+  "test.py::TestDatabaseService::test_create_user",
+  "test.py::TestDatabaseService::test_get_playlist",
+  "test.py::TestDatabaseService::test_get_user",
+  "test.py::TestSpotifyService::test_get_artist",
+  "test.py::TestSpotifyService::test_get_recommendations",
+  "test.py::TestSpotifyService::test_search_track"
+]

@@ -1,0 +1,2786 @@
+2025-03-10 19:38:11,449 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 19:42:19,350 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 46, in middleware
+    if self.limiter.is_allowed(user_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 23, in is_allowed
+    _, call_count, _, _ = pipe.execute()
+                          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 1497, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:19,951 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 21, in get_user
+    cached_user = redis_client.get(user_cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/commands/core.py", line 1821, in get
+    return self.execute_command("GET", name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 545, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:41,750 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 46, in middleware
+    if self.limiter.is_allowed(user_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 23, in is_allowed
+    _, call_count, _, _ = pipe.execute()
+                          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 1497, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:42,391 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 21, in get_user
+    cached_user = redis_client.get(user_cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/commands/core.py", line 1821, in get
+    return self.execute_command("GET", name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 545, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:44,511 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 46, in middleware
+    if self.limiter.is_allowed(user_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 23, in is_allowed
+    _, call_count, _, _ = pipe.execute()
+                          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 1497, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:45,116 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+2025-03-10 19:42:47,991 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 46, in middleware
+    if self.limiter.is_allowed(user_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 23, in is_allowed
+    _, call_count, _, _ = pipe.execute()
+                          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 1497, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:42:48,485 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+2025-03-10 19:43:17,714 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 46, in middleware
+    if self.limiter.is_allowed(user_id):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/middlewares/rate_limiter.py", line 23, in is_allowed
+    _, call_count, _, _ = pipe.execute()
+                          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 1497, in execute
+    conn = self.connection_pool.get_connection("MULTI", self.shard_hint)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:43:17,955 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 277, in connect
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 278, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 639, in _connect
+    raise err
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 627, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 21, in get_user
+    cached_user = redis_client.get(user_cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/commands/core.py", line 1821, in get
+    return self.execute_command("GET", name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/client.py", line 545, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 1074, in get_connection
+    connection.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/redis/connection.py", line 283, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2025-03-10 19:43:53,001 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 19:44:25,173 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 19:52:45,486 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 649, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 716, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 26, in get_user
+    user = db.query(models.User).filter(models.User.telegram_id == telegram_id).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2810, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2894, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1691, in execute
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1532, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 747, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3204, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3283, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3253, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2100, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 716, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2025-03-10 19:52:54,307 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+2025-03-10 19:53:13,746 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+2025-03-10 19:53:27,391 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 649, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 716, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 26, in get_user
+    user = db.query(models.User).filter(models.User.telegram_id == telegram_id).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2810, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2894, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1691, in execute
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1532, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 747, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3204, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3283, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3253, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2100, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 716, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2025-03-10 19:55:11,641 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 971, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1005, in _process_auth
+    return _auth.sha256_password_auth(self, auth_packet)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/_auth.py", line 188, in sha256_password_auth
+    return _roundtrip(conn, data)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'mehdiseyfi'@'localhost' (using password: YES)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 26, in get_user
+    user = db.query(models.User).filter(models.User.telegram_id == telegram_id).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2810, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2894, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1691, in execute
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1532, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 747, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3204, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3283, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3253, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2100, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3250, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 971, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1005, in _process_auth
+    return _auth.sha256_password_auth(self, auth_packet)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/_auth.py", line 188, in sha256_password_auth
+    return _roundtrip(conn, data)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mehdiseyfi'@'localhost' (using password: YES)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2025-03-10 20:01:29,636 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'music_bot_db.users' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 48, in start_command
+    db_user = await get_cached_user(user_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 26, in get_cached_user
+    user = await asyncio.to_thread(get_user, db, user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/cachetools/decorators.py", line 26, in wrapper
+    v = func(*args, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 26, in get_user
+    user = db.query(models.User).filter(models.User.telegram_id == telegram_id).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2810, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2894, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1692, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'music_bot_db.users' doesn't exist")
+[SQL: SELECT users.id AS users_id, users.telegram_id AS users_telegram_id, users.username AS users_username, users.language AS users_language, users.created_at AS users_created_at 
+FROM users 
+WHERE users.telegram_id = %(telegram_id_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'telegram_id_1': 6265418694, 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-03-10 20:02:04,761 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:02:37,566 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:04:02,504 - root - ERROR - Error creating user: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': '94a7d4d8-91d7-4790-8c7d-39b13f9c37cc', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:02,505 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 53, in start_command
+    db_user = await asyncio.to_thread(create_user, db, user_id, user.username)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 38, in create_user
+    db.commit()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3363, in flush
+    self._flush(objects)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3502, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3463, in _flush
+    flush_context.execute()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': '94a7d4d8-91d7-4790-8c7d-39b13f9c37cc', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:06,583 - root - ERROR - Error creating user: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'd522eced-82aa-4231-9a32-d347d8241d55', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:06,584 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 53, in start_command
+    db_user = await asyncio.to_thread(create_user, db, user_id, user.username)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 38, in create_user
+    db.commit()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3363, in flush
+    self._flush(objects)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3502, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3463, in _flush
+    flush_context.execute()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'd522eced-82aa-4231-9a32-d347d8241d55', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:09,191 - root - ERROR - Error creating user: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': '4dea38e9-a963-47f3-addf-2fa8ea7771ce', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:09,192 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 53, in start_command
+    db_user = await asyncio.to_thread(create_user, db, user_id, user.username)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 38, in create_user
+    db.commit()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3363, in flush
+    self._flush(objects)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3502, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3463, in _flush
+    flush_context.execute()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': '4dea38e9-a963-47f3-addf-2fa8ea7771ce', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:14,315 - root - ERROR - Error creating user: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'f0f30433-29fc-4430-85fb-ee2c6202a1f5', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:14,315 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 53, in start_command
+    db_user = await asyncio.to_thread(create_user, db, user_id, user.username)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 38, in create_user
+    db.commit()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3363, in flush
+    self._flush(objects)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3502, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3463, in _flush
+    flush_context.execute()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'f0f30433-29fc-4430-85fb-ee2c6202a1f5', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:20,095 - root - ERROR - Error creating user: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'fd7dfaa7-b524-4d3a-b60b-c54fee295442', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:20,095 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 53, in start_command
+    db_user = await asyncio.to_thread(create_user, db, user_id, user.username)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/database_service/database/crud.py", line 38, in create_user
+    db.commit()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1431, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3363, in flush
+    self._flush(objects)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3502, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3463, in _flush
+    flush_context.execute()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 244, in save_obj
+    _emit_insert_statements(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1096, in _emit_insert_statements
+    c = connection._execute_20(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1411834220' for key 'users.telegram_id'")
+[SQL: INSERT INTO users (id, telegram_id, username, language) VALUES (%(id)s, %(telegram_id)s, %(username)s, %(language)s)]
+[parameters: {'id': 'fd7dfaa7-b524-4d3a-b60b-c54fee295442', 'telegram_id': 1411834220, 'username': 'Mehdiseyfi', 'language': 'en'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2025-03-10 20:04:21,865 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:05:11,114 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:05:21,015 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 42, in create_playlist_with_count
+    results = sp.search(q=mood, type='track', limit=5)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 553, in search
+    return self._get(
+           ^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:06:36,304 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:07:09,105 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:09:08,237 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:09:41,104 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:10:09,427 - root - ERROR - Unexpected error in get_recommendations: HTTPSConnectionPool(host='accounts.spotify.com', port=443): Max retries exceeded with url: /api/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+2025-03-10 20:10:09,428 - root - ERROR - Unexpected error in create_playlist_from_genre: HTTPSConnectionPool(host='accounts.spotify.com', port=443): Max retries exceeded with url: /api/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+2025-03-10 20:10:09,428 - root - ERROR - Error creating playlist: HTTPSConnectionPool(host='accounts.spotify.com', port=443): Max retries exceeded with url: /api/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='accounts.spotify.com', port=443): Max retries exceeded with url: /api/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 581, in refresh_access_token
+    response = self._session.post(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='accounts.spotify.com', port=443): Max retries exceeded with url: /api/token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3d7ac6f680>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+2025-03-10 20:10:14,040 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:10:19,582 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-10 20:10:19,582 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-10 20:10:19,582 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:10:20,885 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 1335, in process_update
+    await coroutine
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_handlers/basehandler.py", line 157, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/handlers/start.py", line 141, in button
+    await create_playlist_with_count(update, context, count, f"{data_type}_{item_id}")
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 103, in create_playlist_with_count
+    await update.callback_query.edit_message_text(text=response, reply_markup=reply_markup)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_callbackquery.py", line 268, in edit_message_text
+    return await self._get_message().edit_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_message.py", line 3659, in edit_text
+    return await self.get_bot().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 1664, in edit_message_text
+    return await super().edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4047, in edit_message_text
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 610, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 745, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 623, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 355, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/_bot.py", line 652, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 201, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 382, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 20:20:21,384 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-10 20:20:21,386 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-10 20:20:21,386 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:20:39,412 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:21:12,584 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:39:32,026 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:39:33,010 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-10 20:39:33,011 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-10 20:39:33,012 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:40:04,956 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:43:22,787 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:43:29,134 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-10 20:43:29,134 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-10 20:43:29,135 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 164, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 73, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:43:55,770 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 20:56:07,526 - root - ERROR - Unexpected error in get_recommendations: error: invalid_client, error_description: Invalid client
+2025-03-10 20:56:07,526 - root - ERROR - Unexpected error in create_playlist_from_genre: error: invalid_client, error_description: Invalid client
+2025-03-10 20:56:07,526 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 49, in create_playlist_with_count
+    track_uris = await create_playlist_from_genre(genre, target_count=track_count)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 170, in create_playlist_from_genre
+    new_tracks = await get_recommendations(seed_genres=[genre], limit=remaining)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/bot_service/bot/services/spotify.py", line 79, in get_recommendations
+    recommendations = await asyncio.to_thread(sp.recommendations, **essential_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 1658, in recommendations
+    return self._get("recommendations", **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 20:56:13,610 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
+2025-03-10 21:04:17,787 - root - ERROR - Error creating playlist: error: invalid_client, error_description: Invalid client
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 588, in refresh_access_token
+    response.raise_for_status()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://accounts.spotify.com/api/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/bot_service/bot/handlers/playlist.py", line 42, in create_playlist_with_count
+    results = sp.search(q=mood, type='track', limit=5)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 553, in search
+    return self._get(
+           ^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 297, in _get
+    return self._internal_call("GET", url, payload, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 221, in _internal_call
+    headers = self._auth_headers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/client.py", line 212, in _auth_headers
+    token = self.auth_manager.get_access_token(as_dict=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 525, in get_access_token
+    token_info = self.validate_token(self.cache_handler.get_cached_token())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 380, in validate_token
+    token_info = self.refresh_access_token(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 596, in refresh_access_token
+    self._handle_oauth_error(http_error)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/spotipy/oauth2.py", line 146, in _handle_oauth_error
+    raise SpotifyOauthError(
+spotipy.oauth2.SpotifyOauthError: error: invalid_client, error_description: Invalid client
+2025-03-10 21:04:25,868 - LogProcessingWorker - ERROR - An error occurred while sending events: [Errno 107] Transport endpoint is not connected
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 138, in _fetch_events
+    self._fetch_event()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 160, in _fetch_event
+    self._event = self._queue.get(block=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/queue.py", line 168, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 203, in _create_socket
+    self._sock.connect((self._host, self._port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 241, in _flush_queued_events
+    self._send_events(events)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/worker.py", line 304, in _send_events
+    self._transport.send(events, use_logging=use_logging)
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 99, in send
+    self._create_socket()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 222, in _create_socket
+    self._close()
+  File "/home/mehdi/botpy/venv/lib/python3.12/site-packages/logstash_async/transport.py", line 138, in _close
+    self._sock.shutdown(socket.SHUT_WR)
+OSError: [Errno 107] Transport endpoint is not connected
